@@ -1,9 +1,7 @@
 import puppeteer from "puppeteer";
 
 async function generatePDF() {
-  const browser = await puppeteer.launch({
-    headless: false,
-  });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   await page.setViewport({
