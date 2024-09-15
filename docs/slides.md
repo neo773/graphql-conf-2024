@@ -16,7 +16,7 @@ class: middle
 
 - Open Source Contributor
 
-- Passionate about DevEx
+- Passionate about DevEx.
 
 ---
 
