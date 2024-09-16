@@ -17,6 +17,7 @@ async function generatePDF() {
   await page.pdf({
     path: "slides.pdf",
     preferCSSPageSize: true,
+    printBackground: true,
   });
 
   await browser.close();
