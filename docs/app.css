@@ -3,6 +3,14 @@ body {
   font-family: #fff;
   font-size: 1rem;
 }
+
+/* Required to avoid Chromiium's lazy-loading of fonts */
+.space-mono {
+  font-family: "Space Mono";
+  position: absolute;
+  opacity: 0;
+}
+
 .remark-code,
 .remark-inline-code {
   font-family: "Space Mono";
