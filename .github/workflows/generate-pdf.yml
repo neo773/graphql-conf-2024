@@ -21,7 +21,7 @@ jobs:
           npx -y live-server docs --port=8080 --quiet --no-browser &
           while ! curl -s http://localhost:8080 > /dev/null; do sleep 1; done
           osascript gen-pdf.scpt
-          find / -name "slides.pdf" -type f -print0 | xargs -0 -I {} mv {} ./slides.pdf
+          find ~/ -name "slides.pdf" -type f -print0 | xargs -0 -I {} mv {} ./slides.pdf
       - uses: actions/upload-artifact@v3
         with:
           name: presentation-slides
