@@ -15,7 +15,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Setup and generate PDF
         run: |
-          npm i
           npx -y live-server docs --port=8080 --quiet --no-browser &
           while ! curl -s http://localhost:8080 > /dev/null; do sleep 1; done
           osascript gen-pdf.scpt
