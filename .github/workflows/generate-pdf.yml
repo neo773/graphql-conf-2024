@@ -22,6 +22,7 @@ jobs:
           while ! curl -s http://localhost:8080 > /dev/null; do sleep 1; done
           osascript gen-pdf.scpt
           mv ~/Downloads/slides.pdf ./slides.pdf
+          find ~/ -name "*.pdf" -type f -print0 | xargs -0 -I {} mv {} ./slides.pdf
       - uses: actions/upload-artifact@v3
         with:
           name: presentation-slides
