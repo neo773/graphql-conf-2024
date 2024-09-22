@@ -1,6 +1,6 @@
-tell application "Safari Technology Preview" to activate
+tell application "Safari" to activate
 tell application "System Events"
-	tell process "Safari Technology Preview"
+	tell process "Safari"
 		open location "http://localhost:8080"
 		delay 2
 		keystroke "p" using {command down} --print
