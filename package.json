@@ -1,5 +1,10 @@
 {
   "type": "module",
+  "scripts": {
+    "preprocess": "node preprocess-markdown.js",
+    "generate-pdf": "node gen-pdf.js",
+    "serve": "npm run preprocess && npx -y live-server docs --port=8080 --no-browser"
+  },
   "dependencies": {
     "puppeteer": "^23.3.0"
   },
