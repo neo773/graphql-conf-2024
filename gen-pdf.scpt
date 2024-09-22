@@ -35,5 +35,7 @@ tell application "System Events"
 		keystroke "slides"
 		delay 0.5
 		key code 36 -- Presses the "Save" button
+		delay 2 -- Wait for the save operation to complete
+		quit
 	end tell
 end tell
