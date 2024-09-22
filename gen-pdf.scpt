@@ -1,3 +1,23 @@
+if application "System Events" is not running then
+   log "System events wasn't running"
+   launch application "System Events"
+   delay 0.5
+end if
+    
+if application "System Events" is not running then
+    repeat 10 times
+        if application "System Events" is not running then
+            log "Not running yet"
+            delay 1
+        else
+            log "Now is running"
+            exit repeat
+        end if
+    end repeat
+else
+    log "Now is running"
+end if
+
 tell application "Safari" to activate
 tell application "System Events"
 	tell process "Safari"

@@ -12,18 +12,34 @@ jobs:
   pdf-generation:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '21'
-      - name: Setup and generate PDF
+
+      - name: Start live-server
+        run: npx -y live-server docs --port=8080 --quiet --no-browser &
+
+      - name: Wait for server to start
         run: |
-          npx -y live-server docs --port=8080 --quiet --no-browser &
-          while ! curl -s http://localhost:8080 > /dev/null; do sleep 1; done
-          osascript gen-pdf.scpt
-          ls -l ~/Desktop/slides.pdf
-          mv ~/Desktop/slides.pdf ${{ github.workspace }}/slides.pdf
-      - uses: actions/upload-artifact@v3
+          while ! curl -s http://localhost:8080 > /dev/null; do 
+            sleep 1
+          done
+
+      - name: Generate PDF
+        run: osascript gen-pdf.scpt
+
+      - name: Check PDF file
+        run: ls -l ~/Desktop/slides.pdf
+
+      - name: Move PDF to workspace
+        run: mv ~/Desktop/slides.pdf ${{ github.workspace }}/slides.pdf
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
         with:
           name: presentation-slides
           path: slides.pdf
