@@ -21,6 +21,7 @@ jobs:
           npx -y live-server docs --port=8080 --quiet --no-browser &
           while ! curl -s http://localhost:8080 > /dev/null; do sleep 1; done
           osascript gen-pdf.scpt
+          ls -l ~/Desktop/slides.pdf
           mv ~/Desktop/slides.pdf ${{ github.workspace }}/slides.pdf
       - uses: actions/upload-artifact@v3
         with:
